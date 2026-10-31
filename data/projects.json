@@ -34,6 +34,42 @@
     "created_at": "2026-10-31"
   },
   {
+    "id": "proj_alclass",
+    "title": "Future Minds — A/L Tuition Class & Academic Management System",
+    "category": "enterprise",
+    "category_name": "Enterprise LMS & Tuition Platform",
+    "short_desc": "Comprehensive Advanced Level tuition institute management system featuring a 12-lecturer faculty directory, academic timetables, online exams, PDF study material delivery, and automated attendance tracking.",
+    "full_desc": "Future Minds is an enterprise educational and tuition institute management platform engineered for Sri Lankan Advanced Level educational institutes. The system coordinates operations across multiple academic streams including Biology, Physics, Chemistry, Combined Mathematics, ICT, and Arts. Features include a dynamic faculty directory showcasing top national lecturers (e.g., Dinesh Muthugala, Darshana Ukuwela, Tissa Jananayake, Amith Pussella) with credentials and subject details, multi-batch timetable scheduling, computer-based online examination testing, secure monthly PDF study material distribution, barcode/ID attendance tracking, and PayHere bank slip approval workflows. Powered by a normalized 18-table relational database and zero-configuration embedded engine.",
+    "tech_stack": ["PHP", "SQLite / MySQL", "Tailwind CSS", "JavaScript", "Online Exam Engine", "LMS Architecture", "PayHere Integration"],
+    "images": [
+      "uploads/projects/alclass_ui_1.jpg",
+      "uploads/projects/alclass_ui_2.jpg",
+      "uploads/projects/alclass_ui_3.jpg",
+      "uploads/projects/alclass_teacher_1.jpg",
+      "uploads/projects/alclass_teacher_2.jpg"
+    ],
+    "live_url": "",
+    "github_url": "",
+    "created_at": "2026-11-01"
+  },
+  {
+    "id": "proj_hotel",
+    "title": "The Grand Horizon — Luxury Hotel & Suites ERP Management System",
+    "category": "enterprise",
+    "category_name": "Hospitality ERP & Reservation Management",
+    "short_desc": "Production-grade hospitality web ERP with 4-tier RBAC authentication, overlapping-date room availability engine, guest lifetime stay ledger, and print-ready luxury guest billing folios.",
+    "full_desc": "The Grand Horizon Hotel & Suites is an enterprise hospitality management and reservation ERP engineered for luxury hotels. Styled in a bespoke 75-80% Luxury White and Gold aesthetic with Navy architectural accents. Key capabilities include a 4-tier Role-Based Access Control (RBAC) security matrix (Administrator, General Manager, Front-Desk Receptionist, Housekeeper), an intelligent date-overlapping room availability engine preventing double-bookings, an interactive visual room inventory grid (Clean, Dirty, Occupied, Maintenance), a lifetime guest CRM directory, automated housekeeping turnover dispatch upon check-out, and itemized guest room folios with print-ready luxury invoices (@media print). Built on a 14-table relational database architecture.",
+    "tech_stack": ["PHP", "MySQL", "Bootstrap 5", "JavaScript", "RBAC Security", "Hospitality ERP", "Automated Folio Invoicing"],
+    "images": [
+      "uploads/projects/hotel_ui_1.jpg",
+      "uploads/projects/hotel_ui_2.jpg",
+      "uploads/projects/hotel_ui_3.jpg"
+    ],
+    "live_url": "",
+    "github_url": "",
+    "created_at": "2026-11-01"
+  },
+  {
     "id": "proj_sakwa",
     "title": "Sakwa Canneries — Enterprise Factory ERP & Export Logistics",
     "category": "enterprise",

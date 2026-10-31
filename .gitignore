@@ -4,6 +4,7 @@ data/login_attempts.json
 data/contact_messages.json
 
 # Environment / OS / Editor cache
+*.zip
 .DS_Store
 Thumbs.db
 desktop.ini
