@@ -145,6 +145,13 @@ if (file_exists($projectsFile)) {
       
       <!-- Left Column: Introduction & CTAs -->
       <div class="hero-content">
+        <!-- CI/CD Test Heading -->
+        <div style="background:rgba(34, 197, 94, 0.12); border:1px solid rgba(34, 197, 94, 0.4); border-radius:10px; padding:10px 18px; margin-bottom:18px; display:inline-block;">
+          <h1 style="font-size:1.35rem; color:#22c55e; margin:0; font-family:var(--font-heading); display:flex; align-items:center; gap:10px; font-weight:700;">
+            <i class="fa-solid fa-circle-check"></i> CI/CD Test - Deployment Active
+          </h1>
+        </div>
+
         <div class="badge-pill">
           <i class="fa-solid fa-certificate"></i>
           <span>NVQ LEVEL 4 &amp; DIPLOMA IN ICT (NVTI BADDEGAMA)</span>
