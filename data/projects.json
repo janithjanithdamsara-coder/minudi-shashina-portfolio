@@ -17,6 +17,39 @@
     "created_at": "2026-10-31"
   },
   {
+    "id": "proj_fashion",
+    "title": "VogueVibe Fashion — Multi-Tier Apparel & Supplier Platform",
+    "category": "web",
+    "category_name": "Enterprise E-Commerce",
+    "short_desc": "Commercial garment e-commerce platform equipped with customer shopping cart workflows, supplier business approval desk, and production batch tracking.",
+    "full_desc": "VogueVibe Fashion is a multi-tier apparel e-commerce system bridging consumers with garment manufacturers. Alongside a modern responsive consumer storefront with apparel categories and shopping cart checkouts, it features an enterprise administrative desk. Administrators can verify and approve textile and garment suppliers, register production batches, audit fabric specifications, and manage warehouse dispatch records. Engineered with PHP and relational MySQL (web_project.sql).",
+    "tech_stack": ["PHP", "MySQL", "JavaScript", "CSS3", "Supplier Management", "Production Workflow"],
+    "images": [
+      "uploads/projects/fashion_ui_1.jpg",
+      "uploads/projects/fashion_ui_2.jpg",
+      "uploads/projects/fashion_ui_3.jpg"
+    ],
+    "live_url": "",
+    "github_url": "",
+    "created_at": "2026-10-31"
+  },
+  {
+    "id": "proj_sakwa",
+    "title": "Sakwa Canneries — Enterprise Factory ERP & Export Logistics",
+    "category": "enterprise",
+    "category_name": "Enterprise ERP & Logistics",
+    "short_desc": "Industrial food canning factory management platform coordinating produce intake, retort sterilizer batch scheduling, warehouse inventory, and international export dispatch.",
+    "full_desc": "Sakwa Canneries & Exports (Pvt) Ltd Enterprise System is an industrial production management and logistics platform engineered to coordinate end-to-end operations at the Baddegama canning factory. The platform manages raw agricultural intake, automated retort sterilizer scheduling, batch quality control compliance, real-time inventory ledger balancing, and export customs shipment documentation. Engineered with modular PHP and relational MySQL infrastructure.",
+    "tech_stack": ["PHP", "MySQL", "Industrial ERP", "Supply Chain", "Batch Tracking", "Enterprise Architecture"],
+    "images": [
+      "uploads/projects/sakwa_ui_1.jpg",
+      "uploads/projects/sakwa_ui_2.jpg"
+    ],
+    "live_url": "",
+    "github_url": "",
+    "created_at": "2026-10-31"
+  },
+  {
     "id": "proj_bmc",
     "title": "BMC Machine Center — Industrial Equipment & Invoicing System",
     "category": "management",
@@ -62,23 +95,6 @@
       "uploads/projects/nexasphere_ui_1.jpg",
       "uploads/projects/nexasphere_ui_2.jpg",
       "uploads/projects/nexasphere_ui_3.jpg"
-    ],
-    "live_url": "",
-    "github_url": "",
-    "created_at": "2026-10-31"
-  },
-  {
-    "id": "proj_fashion",
-    "title": "VogueVibe Fashion — Multi-Tier Apparel & Supplier Platform",
-    "category": "enterprise",
-    "category_name": "Enterprise E-Commerce",
-    "short_desc": "Commercial garment e-commerce platform equipped with customer shopping cart workflows, supplier business approval desk, and production batch tracking.",
-    "full_desc": "VogueVibe Fashion is a multi-tier apparel e-commerce system bridging consumers with garment manufacturers. Alongside a modern responsive consumer storefront with apparel categories and shopping cart checkouts, it features an enterprise administrative desk. Administrators can verify and approve textile and garment suppliers, register production batches, audit fabric specifications, and manage warehouse dispatch records. Engineered with PHP and relational MySQL (web_project.sql).",
-    "tech_stack": ["PHP", "MySQL", "JavaScript", "CSS3", "Supplier Management", "Production Workflow"],
-    "images": [
-      "uploads/projects/fashion_ui_1.jpg",
-      "uploads/projects/fashion_ui_2.jpg",
-      "uploads/projects/fashion_ui_3.jpg"
     ],
     "live_url": "",
     "github_url": "",

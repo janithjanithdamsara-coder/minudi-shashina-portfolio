@@ -512,12 +512,13 @@ function initDeveloperTerminal() {
       <div>• English Teacher (Dec 2020 - Dec 2021) | Edexer Online Institute</div>
     `,
     'projects': `
-      <div class="term-res-title">// REAL SOFTWARE PROJECTS (FROM REPOSITORIES)</div>
-      <div>1. BloomyHaven — Floral E-Commerce & Admin CMS (PHP/MySQL - 3 Screenshots)</div>
-      <div>2. BMC Machine Center — Industrial Equipment & Invoicing (Java Swing/HTML - 3 Screenshots)</div>
-      <div>3. Gourmet POS — Restaurant Order & Automated Billing (Java Swing/MySQL - 3 Screenshots)</div>
-      <div>4. NexaSphere University — Academic & Admissions Portal (PHP/MySQL - 3 Screenshots)</div>
-      <div>5. VogueVibe Fashion — Multi-Tier Apparel & Supplier Platform (PHP/MySQL - 3 Screenshots)</div>
+      <div class="term-res-title">// REAL SOFTWARE PROJECTS (FROM REPOSITORIES & INDUSTRY)</div>
+      <div>1. BloomyHaven — Floral E-Commerce & Admin CMS (PHP/MySQL)</div>
+      <div>2. VogueVibe Fashion — Multi-Tier Apparel & Supplier Platform (PHP/MySQL)</div>
+      <div>3. Sakwa Canneries — Enterprise Factory ERP & Logistics (PHP/MySQL)</div>
+      <div>4. BMC Machine Center — Industrial Equipment & Invoicing (Java Swing/HTML)</div>
+      <div>5. Gourmet POS — Restaurant Order & Automated Billing (Java Swing/MySQL)</div>
+      <div>6. NexaSphere University — Academic & Admissions Portal (PHP/MySQL)</div>
     `,
     'contact': `
       <div class="term-res-title">// DIRECT CHANNELS</div>
