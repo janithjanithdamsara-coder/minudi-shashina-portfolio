@@ -1,8 +1,18 @@
-# Prevent Directory Browsing
+# 1. Prevent Directory Browsing
 Options -Indexes
 
-# Protect Sensitive Configuration, Database and Hidden Files
-<FilesMatch "^(\.env|\.git|\.htaccess|.*\.sql|.*\.log)$">
+# 2. Production HTTPS Redirect (Active for live domain, safe for local testing)
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTP_HOST} !^localhost [NC]
+    RewriteCond %{HTTP_HOST} !^127\.0\.0\.1 [NC]
+    RewriteCond %{HTTPS} off
+    RewriteCond %{HTTP:X-Forwarded-Proto} !https
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# 3. Block Sensitive Files, Environments, Configs, Logs, and Repositories
+<FilesMatch "^\.|\.env|\.git|\.cpanel\.yml|composer\.(json|lock)|package\.json|\.(sql|log|ini|yml|yaml|md|sh|bak|tmp)$">
     <IfModule mod_authz_core.c>
         Require all denied
     </IfModule>
@@ -12,11 +22,36 @@ Options -Indexes
     </IfModule>
 </FilesMatch>
 
-# Security Headers (Defend against Clickjacking, MIME Sniffing, XSS)
+# 4. Block Direct Access to Hidden Directories (.git, .github)
+<IfModule mod_rewrite.c>
+    RewriteRule ^\.git - [F,L]
+    RewriteRule ^\.github - [F,L]
+</IfModule>
+
+# 5. Enterprise Security Headers (Clickjacking, MIME Sniffing, XSS, Referrer, CSP)
 <IfModule mod_headers.c>
     Header always set X-Frame-Options "SAMEORIGIN"
     Header always set X-Content-Type-Options "nosniff"
     Header always set X-XSS-Protection "1; mode=block"
     Header always set Referrer-Policy "strict-origin-when-cross-origin"
     Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+    Header always set Content-Security-Policy "default-src 'self' 'unsafe-inline' https: data: blob:; img-src 'self' data: https: blob:; font-src 'self' https: data:;"
 </IfModule>
+
+# 6. Disable PHP Error Display to the Public (Log errors internally)
+<IfModule mod_php.c>
+    php_flag display_errors Off
+    php_flag log_errors On
+</IfModule>
+<IfModule mod_php7.c>
+    php_flag display_errors Off
+    php_flag log_errors On
+</IfModule>
+<IfModule mod_php8.c>
+    php_flag display_errors Off
+    php_flag log_errors On
+</IfModule>
+
+# 7. Custom Error Routing (Masks Server Information and Directory Enumeration)
+ErrorDocument 403 /minudi%20akka/index.php
+ErrorDocument 404 /minudi%20akka/index.php

@@ -1,5 +1,7 @@
 <?php
-// Start visitor tracking
+// Initialize Secure Framework and Tracking
+require_once __DIR__ . '/php/security.php';
+init_secure_session();
 require_once __DIR__ . '/php/tracker.php';
 
 // Load Projects from JSON
@@ -953,6 +955,7 @@ if (file_exists($projectsFile)) {
         <!-- AJAX Contact Form -->
         <div class="glass-card">
           <form id="contact-form" class="contact-form" action="php/contact.php" method="POST">
+            <input type="hidden" name="csrf_token" value="<?= htmlspecialchars(get_csrf_token()) ?>">
             
             <div class="form-group">
               <label for="name"><i class="fa-solid fa-user"></i> Your Full Name</label>
