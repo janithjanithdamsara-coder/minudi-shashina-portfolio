@@ -229,10 +229,10 @@ function hash_admin_password($plainPassword) {
 }
 
 function verify_admin_password($enteredUsername, $enteredPassword) {
-    // Default Admin Credentials
+    // Default Admin Credentials (admin / admin123)
     $expectedUsername = 'admin';
     // Bcrypt hash for 'admin123' (Cost 12)
-    $defaultHash = '$2y$12$0tOqj.2pE0h9bEwMbmVfqu4eJj33Vb0vjLwZkG2k3cQq74tqI4rVy';
+    $defaultHash = '$2y$12$Z0yQYwQMmwAPyLchDlsVa.kFwCY9pIyizDNrLGq51opylok9EnIPu';
 
     // Allow custom credentials file if updated
     $credFile = __DIR__ . '/../data/admin_credentials.json';
