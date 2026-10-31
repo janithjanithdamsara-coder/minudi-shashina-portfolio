@@ -1,0 +1,14 @@
+# Logs and runtime visitor tracking
+data/admin_audit.log
+data/login_attempts.json
+data/contact_messages.json
+
+# Environment / OS / Editor cache
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.log
+*.tmp
+*.bak

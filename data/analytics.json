@@ -1,0 +1,64 @@
+{
+    "total_views": 7,
+    "unique_visitors": 1,
+    "today_date": "2026-10-31",
+    "today_views": 7,
+    "today_uniques": 1,
+    "unique_ips_today": [
+        "837ec5754f503cfaaee0929fd48974e7"
+    ],
+    "all_unique_ips": [
+        "837ec5754f503cfaaee0929fd48974e7"
+    ],
+    "recent_visits": [
+        {
+            "timestamp": "2026-10-31 14:50:14",
+            "ip": "Localhost (127.0.0.1)",
+            "device": "Desktop",
+            "browser": "Chrome",
+            "page": "\/minudi%20akka\/index.php"
+        },
+        {
+            "timestamp": "2026-10-31 14:25:12",
+            "ip": "Localhost (127.0.0.1)",
+            "device": "Desktop",
+            "browser": "Browser",
+            "page": "\/minudi%20akka\/index.php"
+        },
+        {
+            "timestamp": "2026-10-31 14:25:06",
+            "ip": "Localhost (127.0.0.1)",
+            "device": "Desktop",
+            "browser": "Browser",
+            "page": "\/minudi%20akka\/index.php"
+        },
+        {
+            "timestamp": "2026-10-31 13:56:22",
+            "ip": "Localhost (127.0.0.1)",
+            "device": "Desktop",
+            "browser": "Browser",
+            "page": "\/minudi%20akka\/index.php"
+        },
+        {
+            "timestamp": "2026-10-31 13:45:13",
+            "ip": "Localhost (127.0.0.1)",
+            "device": "Desktop",
+            "browser": "Chrome",
+            "page": "\/minudi%20akka\/"
+        },
+        {
+            "timestamp": "2026-10-31 13:45:11",
+            "ip": "Localhost (127.0.0.1)",
+            "device": "Desktop",
+            "browser": "Chrome",
+            "page": "\/minudi%20akka\/"
+        },
+        {
+            "timestamp": "2026-10-31 13:40:19",
+            "ip": "Localhost (127.0.0.1)",
+            "device": "Desktop",
+            "browser": "Browser",
+            "page": "\/minudi%20akka\/index.php"
+        }
+    ]
+}

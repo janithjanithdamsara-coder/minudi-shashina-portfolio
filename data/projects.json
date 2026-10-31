@@ -1,0 +1,87 @@
+[
+  {
+    "id": "proj_bloomy",
+    "title": "BloomyHaven — Floral E-Commerce & Gift Boutique",
+    "category": "web",
+    "category_name": "Web Application & E-Commerce",
+    "short_desc": "Handcrafted floral e-commerce platform with curated bouquet collections, occasion-based gift categories, and custom administrative CMS orders desk.",
+    "full_desc": "BloomyHaven is a modern floral boutique web application built for boutique flower retailers. It features dynamic bouquet catalog filtering, fresh cut flower box ordering, responsive customer checkout, and a comprehensive administrative CMS control center. The back-office dashboard allows store managers to manage floral categories, update inventory stocks, process customer delivery orders, and oversee customer inquiries. Engineered with procedural and object-oriented PHP and structured relational MySQL schema (bloomy_haven.sql).",
+    "tech_stack": ["PHP", "MySQL", "CSS3 Glassmorphism", "JavaScript", "Admin CMS", "E-Commerce Architecture"],
+    "images": [
+      "uploads/projects/bloomy_ui_1.jpg",
+      "uploads/projects/bloomy_ui_2.jpg",
+      "uploads/projects/bloomy_ui_3.jpg"
+    ],
+    "live_url": "",
+    "github_url": "",
+    "created_at": "2026-10-31"
+  },
+  {
+    "id": "proj_bmc",
+    "title": "BMC Machine Center — Industrial Equipment & Invoicing System",
+    "category": "management",
+    "category_name": "Desktop System & Invoicing",
+    "short_desc": "Java desktop industrial sewing machinery control system featuring machine catalogs, spare parts inventory, warranty tracking, and automated customer HTML invoicing.",
+    "full_desc": "BMC Sewing Machine Center is an enterprise desktop software system developed with Java Swing and NetBeans GUI Builder. Built to oversee sales, servicing, and spare parts distribution for industrial garment machinery. Key components include a 200+ Swing component Dashboard with live machinery search, CRUD record controls, spare parts stock reconciliation, and warranty expiry tracking. Features an automated HTML/CSS print-ready invoice generation engine (Invoice_INV-*.html) and relational database integration via JDBC (bmc_machine_center.sql).",
+    "tech_stack": ["Java (Swing / AWT)", "NetBeans GUI", "MySQL", "JDBC", "HTML Invoicing", "Desktop Architecture"],
+    "images": [
+      "uploads/projects/bmc_ui_1.jpg",
+      "uploads/projects/bmc_ui_2.jpg",
+      "uploads/projects/bmc_ui_3.jpg"
+    ],
+    "live_url": "",
+    "github_url": "",
+    "created_at": "2026-10-31"
+  },
+  {
+    "id": "proj_pos",
+    "title": "Gourmet POS — Restaurant Order & Automated Billing System",
+    "category": "management",
+    "category_name": "Desktop POS & Billing",
+    "short_desc": "High-efficiency Java desktop point-of-sale terminal with interactive table ordering, meal category touch panels, real-time bill calculations, and printable receipts.",
+    "full_desc": "Gourmet POS is a point-of-sale and kitchen billing desktop application designed for fast-paced dining restaurants. Features an intuitive cashier terminal that computes sub-totals, service charges (10%), promotional discounts, and net bill amounts in real time. Incorporates dynamic food menu categories, table assignment dispatch, daily revenue analytics, top-selling dish counters, and printable thermal receipt formatting. Powered by Java and relational MySQL database backend (rest_bill_system.sql).",
+    "tech_stack": ["Java Swing", "MySQL", "JDBC", "POS Terminal", "Receipt Engine", "Sales Analytics"],
+    "images": [
+      "uploads/projects/pos_ui_1.jpg",
+      "uploads/projects/pos_ui_2.jpg",
+      "uploads/projects/pos_ui_3.jpg"
+    ],
+    "live_url": "",
+    "github_url": "",
+    "created_at": "2026-10-31"
+  },
+  {
+    "id": "proj_nexasphere",
+    "title": "NexaSphere University — Academic & Admissions Portal",
+    "category": "web",
+    "category_name": "Web Application & LMS",
+    "short_desc": "Academic portal facilitating departmental course syllabi, campus computer lab overviews, and student online admission and registration processing.",
+    "full_desc": "NexaSphere University is a higher education web portal built to connect prospective students with academic faculty curricula. It provides course catalogs with syllabus credit hours and prerequisite requirements, faculty department showcases, and a secure online student admission engine. The registration backend includes profile photo uploads, input sanitization, and database verification into MySQL (phpnexasphere_db.sql).",
+    "tech_stack": ["PHP", "MySQL", "HTML5", "CSS3", "Student Registration", "Portal Architecture"],
+    "images": [
+      "uploads/projects/nexasphere_ui_1.jpg",
+      "uploads/projects/nexasphere_ui_2.jpg",
+      "uploads/projects/nexasphere_ui_3.jpg"
+    ],
+    "live_url": "",
+    "github_url": "",
+    "created_at": "2026-10-31"
+  },
+  {
+    "id": "proj_fashion",
+    "title": "VogueVibe Fashion — Multi-Tier Apparel & Supplier Platform",
+    "category": "enterprise",
+    "category_name": "Enterprise E-Commerce",
+    "short_desc": "Commercial garment e-commerce platform equipped with customer shopping cart workflows, supplier business approval desk, and production batch tracking.",
+    "full_desc": "VogueVibe Fashion is a multi-tier apparel e-commerce system bridging consumers with garment manufacturers. Alongside a modern responsive consumer storefront with apparel categories and shopping cart checkouts, it features an enterprise administrative desk. Administrators can verify and approve textile and garment suppliers, register production batches, audit fabric specifications, and manage warehouse dispatch records. Engineered with PHP and relational MySQL (web_project.sql).",
+    "tech_stack": ["PHP", "MySQL", "JavaScript", "CSS3", "Supplier Management", "Production Workflow"],
+    "images": [
+      "uploads/projects/fashion_ui_1.jpg",
+      "uploads/projects/fashion_ui_2.jpg",
+      "uploads/projects/fashion_ui_3.jpg"
+    ],
+    "live_url": "",
+    "github_url": "",
+    "created_at": "2026-10-31"
+  }
+]
