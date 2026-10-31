@@ -293,9 +293,12 @@ if ($msg === 'expired') {
 
       <div class="form-group">
         <label for="password">Password</label>
-        <div class="input-wrapper">
+        <div class="input-wrapper" style="position:relative;">
           <i class="fa-solid fa-lock"></i>
-          <input type="password" id="password" name="password" class="form-input" placeholder="Enter password" required value="admin123">
+          <input type="password" id="password" name="password" class="form-input" placeholder="Enter password" required value="admin123" style="padding-right:45px;">
+          <button type="button" id="toggle-pwd-btn" onclick="togglePasswordVisibility()" style="position:absolute; right:14px; background:none; border:none; color:#94a3b8; cursor:pointer; font-size:1.1rem; padding:4px; transition:color 0.2s;" title="Show/Hide Password" aria-label="Toggle password visibility">
+            <i class="fa-solid fa-eye" id="toggle-pwd-icon"></i>
+          </button>
         </div>
       </div>
 
@@ -313,5 +316,22 @@ if ($msg === 'expired') {
     </form>
   </div>
 
+  <script>
+    function togglePasswordVisibility() {
+      const pwd = document.getElementById('password');
+      const icon = document.getElementById('toggle-pwd-icon');
+      if (pwd.type === 'password') {
+        pwd.type = 'text';
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+        icon.style.color = '#a970ff';
+      } else {
+        pwd.type = 'password';
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+        icon.style.color = '#94a3b8';
+      }
+    }
+  </script>
 </body>
 </html>

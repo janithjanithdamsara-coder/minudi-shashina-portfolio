@@ -96,9 +96,7 @@ if (file_exists($projectsFile)) {
           <span>Available for Opportunities</span>
         </div>
 
-        <a href="admin/login.php" class="btn-nav btn-nav-outline" style="padding:6px 14px; font-size:0.8rem; text-decoration:none; color:var(--text-muted); border-radius:30px; border:1px solid var(--border-glass);" title="Admin Access">
-          <i class="fa-solid fa-lock"></i>
-        </a>
+
 
         <button id="mobile-menu-toggle" class="mobile-toggle-btn" title="Toggle Navigation">
           <i class="fa-solid fa-bars"></i>
@@ -130,7 +128,7 @@ if (file_exists($projectsFile)) {
         <li><a href="#projects"><i class="fa-solid fa-laptop-code"></i> Projects</a></li>
         <li><a href="#terminal"><i class="fa-solid fa-terminal"></i> Terminal</a></li>
         <li><a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a></li>
-        <li><a href="admin/login.php"><i class="fa-solid fa-shield-halved"></i> Admin Control</a></li>
+
       </ul>
     </div>
 
@@ -370,33 +368,7 @@ if (file_exists($projectsFile)) {
           </div>
         </div>
 
-        <!-- Card 4: GCE O/L -->
-        <div class="glass-card edu-card">
-          <div class="edu-icon-box">
-            <i class="fa-solid fa-school"></i>
-          </div>
-          <div class="edu-content">
-            <span class="edu-period">2020 (2021)</span>
-            <h3>G.C.E (O/L) Exam (English Medium)</h3>
-            <div class="edu-institution">Christ Church Girls' College - Baddegama (2010 - 2025)</div>
-            <p class="edu-desc">
-              Successfully passed the General Certificate of Education (Ordinary Level) examination in the English medium with strong analytical and language scores.
-            </p>
-            
-            <div class="ol-grades-grid">
-              <div class="ol-badge"><span class="sub">Buddhism</span><span class="grade">A</span></div>
-              <div class="ol-badge"><span class="sub">English</span><span class="grade">A</span></div>
-              <div class="ol-badge"><span class="sub">Sinhala</span><span class="grade">B</span></div>
-              <div class="ol-badge"><span class="sub">Maths</span><span class="grade">B</span></div>
-              <div class="ol-badge"><span class="sub">History</span><span class="grade">B</span></div>
-              <div class="ol-badge"><span class="sub">Dancing</span><span class="grade">B</span></div>
-              <div class="ol-badge"><span class="sub">ICT</span><span class="grade">C</span></div>
-              <div class="ol-badge"><span class="sub">Tamil</span><span class="grade">C</span></div>
-              <div class="ol-badge"><span class="sub">Science</span><span class="grade">C</span></div>
-              <div class="ol-badge"><span class="sub">English Lit</span><span class="grade">S</span></div>
-            </div>
-          </div>
-        </div>
+
 
       </div>
 
@@ -849,7 +821,6 @@ if (file_exists($projectsFile)) {
           <button class="terminal-btn" data-cmd="education">education</button>
           <button class="terminal-btn" data-cmd="experience">experience</button>
           <button class="terminal-btn" data-cmd="projects">projects</button>
-          <button class="terminal-btn" data-cmd="reference">reference</button>
           <button class="terminal-btn" data-cmd="contact">contact</button>
           <button class="terminal-btn" data-cmd="clear" style="color:#ef4444;">clear</button>
         </div>
@@ -858,38 +829,7 @@ if (file_exists($projectsFile)) {
     </div>
   </section>
 
-  <!-- ===================================================================
-       OFFICIAL RECOMMENDATION REFERENCE SECTION
-       =================================================================== -->
-  <section class="section-padding">
-    <div class="container">
-      
-      <div class="section-header">
-        <span class="section-tag">// ACADEMIC &amp; VOCATIONAL RECOMMENDATION</span>
-        <h2 class="section-title">Professional Reference</h2>
-        <p class="section-subtitle">
-          Verified academic and professional reference from the National Vocational Training Institute (NVTI).
-        </p>
-      </div>
 
-      <div class="reference-card-wrapper">
-        <div class="glass-card reference-card">
-          <div class="ref-avatar">
-            <i class="fa-solid fa-user-tie"></i>
-          </div>
-          <div class="ref-info">
-            <h3>E. A. R. Lakshman</h3>
-            <div class="ref-role">Software Developer Instructor</div>
-            <div class="ref-org">National Vocational Training Institute (NVTI) - Baddegama</div>
-            <a href="tel:+94718249323" class="ref-phone">
-              <i class="fa-solid fa-phone"></i> +94 71 824 9323
-            </a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
 
   <!-- ===================================================================
        CONTACT SECTION

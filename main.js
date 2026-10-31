@@ -481,7 +481,6 @@ function initDeveloperTerminal() {
       <div>• <span class="term-command">education</span>   : View NVTI and school academic records</div>
       <div>• <span class="term-command">experience</span>  : Show career history and internships</div>
       <div>• <span class="term-command">projects</span>    : List featured live software projects</div>
-      <div>• <span class="term-command">reference</span>   : Show official instructor reference</div>
       <div>• <span class="term-command">contact</span>     : Display direct contact channels</div>
       <div>• <span class="term-command">clear</span>       : Clear the terminal screen</div>
     `,
@@ -504,7 +503,6 @@ function initDeveloperTerminal() {
       <div>1. Diploma in ICT - NVQ Level V (2026 - Present) | NVTI Baddegama</div>
       <div>2. Software Developer - NVQ Level IV (2025) | NVTI Baddegama</div>
       <div>3. English Diploma Certificate (2024) | INPM</div>
-      <div>4. G.C.E. O/L Exam (English Medium) (2020/2021) | Christ Church Girls' College Baddegama</div>
     `,
     'experience': `
       <div class="term-res-title">// WORK EXPERIENCE TIMELINE</div>
@@ -520,13 +518,6 @@ function initDeveloperTerminal() {
       <div>3. Gourmet POS — Restaurant Order & Automated Billing (Java Swing/MySQL - 3 Screenshots)</div>
       <div>4. NexaSphere University — Academic & Admissions Portal (PHP/MySQL - 3 Screenshots)</div>
       <div>5. VogueVibe Fashion — Multi-Tier Apparel & Supplier Platform (PHP/MySQL - 3 Screenshots)</div>
-    `,
-    'reference': `
-      <div class="term-res-title">// OFFICIAL RECOMMENDATION REFERENCE</div>
-      <div>Instructor : E. A. R. Lakshman</div>
-      <div>Role       : Software Developer Instructor</div>
-      <div>Institute  : National Vocational Training Institute (NVTI) Baddegama</div>
-      <div>Phone      : +94 71 824 9323</div>
     `,
     'contact': `
       <div class="term-res-title">// DIRECT CHANNELS</div>

@@ -2,5 +2,9 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/minudish/public_html
+    - /bin/mkdir -p $DEPLOYPATH
     - /bin/cp -R * $DEPLOYPATH/
     - /bin/cp .htaccess $DEPLOYPATH/ 2>/dev/null || true
+    - /bin/chmod 755 $DEPLOYPATH
+    - /bin/chmod -R 775 $DEPLOYPATH/data 2>/dev/null || true
+    - /bin/chmod -R 775 $DEPLOYPATH/uploads 2>/dev/null || true

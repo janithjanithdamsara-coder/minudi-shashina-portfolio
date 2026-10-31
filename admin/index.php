@@ -572,6 +572,9 @@ if (file_exists($messagesFile)) {
       <button class="tab-btn" onclick="switchTab('audit-tab', this)">
         <i class="fa-solid fa-shield-halved"></i> Security Audit Log
       </button>
+      <button class="tab-btn" onclick="switchTab('password-tab', this)">
+        <i class="fa-solid fa-key"></i> Change Password
+      </button>
     </div>
 
     <!-- ==========================================
@@ -875,6 +878,62 @@ if (file_exists($messagesFile)) {
       </div>
     </div>
 
+    <!-- ==========================================
+         TAB 5: CHANGE ADMIN PASSWORD
+         ========================================== -->
+    <div id="password-tab" class="tab-pane">
+      <div class="content-box" style="max-width: 600px; margin: 0 auto;">
+        <div class="box-header">
+          <div>
+            <h3 class="box-title"><i class="fa-solid fa-key" style="color:var(--accent-purple); margin-right:8px;"></i> Change Admin Password</h3>
+            <p style="color:var(--text-muted); font-size:0.86rem; margin-top:4px;">Update your administrator credentials securely with Bcrypt encryption.</p>
+          </div>
+        </div>
+
+        <form id="change-pwd-form" style="display:flex; flex-direction:column; gap:18px;">
+          <input type="hidden" name="csrf_token" value="<?= htmlspecialchars(get_csrf_token()) ?>">
+
+          <div id="pwd-alert" style="display:none; padding:12px 16px; border-radius:10px; font-size:0.9rem;"></div>
+
+          <div class="form-group">
+            <label for="current_password" style="display:block; margin-bottom:8px; font-weight:600; font-size:0.88rem; color:#cbd5e1;">Current Password *</label>
+            <div style="position:relative;">
+              <input type="password" id="current_password" name="current_password" class="form-input" style="width:100%; padding-right:45px;" placeholder="Enter current admin password" required>
+              <button type="button" class="pwd-eye-btn" onclick="toggleFieldVisibility('current_password', this)" style="position:absolute; right:12px; top:50%; transform:translateY(-50%); background:none; border:none; color:var(--text-muted); cursor:pointer; font-size:1.05rem;" title="Show/Hide Password">
+                <i class="fa-regular fa-eye"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="new_password" style="display:block; margin-bottom:8px; font-weight:600; font-size:0.88rem; color:#cbd5e1;">New Password *</label>
+            <div style="position:relative;">
+              <input type="password" id="new_password" name="new_password" class="form-input" style="width:100%; padding-right:45px;" placeholder="Minimum 6 characters" required minlength="6">
+              <button type="button" class="pwd-eye-btn" onclick="toggleFieldVisibility('new_password', this)" style="position:absolute; right:12px; top:50%; transform:translateY(-50%); background:none; border:none; color:var(--text-muted); cursor:pointer; font-size:1.05rem;" title="Show/Hide Password">
+                <i class="fa-regular fa-eye"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="confirm_password" style="display:block; margin-bottom:8px; font-weight:600; font-size:0.88rem; color:#cbd5e1;">Confirm New Password *</label>
+            <div style="position:relative;">
+              <input type="password" id="confirm_password" name="confirm_password" class="form-input" style="width:100%; padding-right:45px;" placeholder="Re-type new password" required minlength="6">
+              <button type="button" class="pwd-eye-btn" onclick="toggleFieldVisibility('confirm_password', this)" style="position:absolute; right:12px; top:50%; transform:translateY(-50%); background:none; border:none; color:var(--text-muted); cursor:pointer; font-size:1.05rem;" title="Show/Hide Password">
+                <i class="fa-regular fa-eye"></i>
+              </button>
+            </div>
+          </div>
+
+          <div style="display:flex; justify-content:flex-end; gap:12px; margin-top:10px;">
+            <button type="submit" id="save-pwd-btn" class="btn-primary" style="padding:12px 24px;">
+              <i class="fa-solid fa-lock"></i> Update Password
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
   </div>
 
   <!-- ===================================================================
@@ -1050,6 +1109,78 @@ if (file_exists($messagesFile)) {
         btn.disabled = false;
       }
     });
+
+    // Toggle Password Visibility in Admin Panel
+    function toggleFieldVisibility(fieldId, btn) {
+      const input = document.getElementById(fieldId);
+      const icon = btn.querySelector('i');
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+      } else {
+        input.type = 'password';
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+      }
+    }
+
+    // Change Password Form Submit
+    const pwdForm = document.getElementById('change-pwd-form');
+    if (pwdForm) {
+      pwdForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const alertBox = document.getElementById('pwd-alert');
+        const submitBtn = document.getElementById('save-pwd-btn');
+        const originalText = submitBtn.innerHTML;
+
+        alertBox.style.display = 'none';
+
+        const newP = document.getElementById('new_password').value;
+        const confP = document.getElementById('confirm_password').value;
+        if (newP !== confP) {
+          alertBox.style.display = 'block';
+          alertBox.style.background = 'rgba(239, 68, 68, 0.15)';
+          alertBox.style.border = '1px solid rgba(239, 68, 68, 0.4)';
+          alertBox.style.color = '#fca5a5';
+          alertBox.textContent = 'New password and confirmation password do not match.';
+          return;
+        }
+
+        submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Updating...';
+        submitBtn.disabled = true;
+
+        try {
+          const res = await fetch('api/change_password.php', {
+            method: 'POST',
+            body: new FormData(pwdForm)
+          });
+          const data = await res.json();
+          alertBox.style.display = 'block';
+          if (data.status === 'success') {
+            alertBox.style.background = 'rgba(16, 185, 129, 0.15)';
+            alertBox.style.border = '1px solid rgba(16, 185, 129, 0.4)';
+            alertBox.style.color = '#6ee7b7';
+            alertBox.textContent = data.message;
+            pwdForm.reset();
+          } else {
+            alertBox.style.background = 'rgba(239, 68, 68, 0.15)';
+            alertBox.style.border = '1px solid rgba(239, 68, 68, 0.4)';
+            alertBox.style.color = '#fca5a5';
+            alertBox.textContent = data.message || 'Error changing password.';
+          }
+        } catch (err) {
+          alertBox.style.display = 'block';
+          alertBox.style.background = 'rgba(239, 68, 68, 0.15)';
+          alertBox.style.border = '1px solid rgba(239, 68, 68, 0.4)';
+          alertBox.style.color = '#fca5a5';
+          alertBox.textContent = 'Server communication error. Please try again.';
+        } finally {
+          submitBtn.innerHTML = originalText;
+          submitBtn.disabled = false;
+        }
+      });
+    }
   </script>
 </body>
 </html>
