@@ -1,16 +1,25 @@
 {
-    "total_views": 12073,
-    "unique_visitors": 1,
+    "total_views": 12074,
+    "unique_visitors": 2,
     "today_date": "2026-10-31",
-    "today_views": 12073,
-    "today_uniques": 1,
+    "today_views": 12074,
+    "today_uniques": 2,
     "unique_ips_today": [
-        "837ec5754f503cfaaee0929fd48974e7"
+        "837ec5754f503cfaaee0929fd48974e7",
+        "f528764d624db129b32c21fbca0cb8d6"
     ],
     "all_unique_ips": [
-        "837ec5754f503cfaaee0929fd48974e7"
+        "837ec5754f503cfaaee0929fd48974e7",
+        "f528764d624db129b32c21fbca0cb8d6"
     ],
     "recent_visits": [
+        {
+            "timestamp": "2026-10-31 20:08:26",
+            "ip": "Localhost (127.0.0.1)",
+            "device": "Desktop",
+            "browser": "Browser",
+            "page": "\/"
+        },
         {
             "timestamp": "2026-10-31 19:54:37",
             "ip": "Localhost (127.0.0.1)",
@@ -83,13 +92,6 @@
         },
         {
             "timestamp": "2026-10-31 15:49:46",
-            "ip": "Localhost (127.0.0.1)",
-            "device": "Desktop",
-            "browser": "Chrome",
-            "page": "\/minudi%20akka\/staging\/BloomyHaven\/images\/site_assets\/logo.jfif"
-        },
-        {
-            "timestamp": "2026-10-31 15:49:45",
             "ip": "Localhost (127.0.0.1)",
             "device": "Desktop",
             "browser": "Chrome",

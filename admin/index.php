@@ -937,6 +937,7 @@ if (file_exists($messagesFile)) {
                 <th>Preview UI</th>
                 <th>Project Title</th>
                 <th>Category</th>
+                <th>Live Demo</th>
                 <th>UI Screenshots</th>
                 <th>Tech Stack</th>
                 <th>Actions</th>
@@ -945,7 +946,7 @@ if (file_exists($messagesFile)) {
             <tbody>
               <?php if (empty($projects)): ?>
                 <tr>
-                  <td colspan="6" style="text-align:center; padding:30px; color:var(--text-muted);">
+                  <td colspan="7" style="text-align:center; padding:30px; color:var(--text-muted);">
                     No projects found. Click "Add New Project" to get started.
                   </td>
                 </tr>
@@ -970,6 +971,17 @@ if (file_exists($messagesFile)) {
                         $badgeClass = $cat === 'web' ? 'badge-web' : ($cat === 'management' ? 'badge-mgmt' : 'badge-ent');
                       ?>
                       <span class="badge-pill <?= $badgeClass ?>"><?= htmlspecialchars($proj['category_name'] ?? ucfirst($cat)) ?></span>
+                    </td>
+                    <td>
+                      <?php if (!empty($proj['live_url'])): ?>
+                        <a href="<?= htmlspecialchars($proj['live_url']) ?>" target="_blank" rel="noopener noreferrer" class="badge-pill" style="background:rgba(6,182,212,0.15); color:var(--accent-cyan); border:1px solid rgba(6,182,212,0.3); text-decoration:none; display:inline-flex; align-items:center; gap:5px; font-weight:600; font-size:0.78rem;" title="<?= htmlspecialchars($proj['live_url']) ?>">
+                          <i class="fa-solid fa-arrow-up-right-from-square"></i> Live
+                        </a>
+                      <?php else: ?>
+                        <span class="badge-pill" style="background:rgba(255,255,255,0.04); color:var(--text-muted); border:1px solid rgba(255,255,255,0.08); font-size:0.75rem;">
+                          None
+                        </span>
+                      <?php endif; ?>
                     </td>
                     <td>
                       <button type="button" class="action-btn" style="width:auto; padding:4px 10px; font-family:'JetBrains Mono',monospace; font-size:0.82rem; color:var(--accent-cyan); border-color:rgba(0,242,254,0.3);" title="View & Manage Screenshots" onclick='editProject(<?= json_encode($proj) ?>)'>
@@ -1318,6 +1330,16 @@ if (file_exists($messagesFile)) {
           <input type="text" id="proj-tech" name="tech_stack" class="form-input" placeholder="e.g. PHP, MySQL, JavaScript, Bootstrap">
         </div>
 
+        <div class="form-group">
+          <label for="proj-live-url">
+            <i class="fa-solid fa-link" style="color:var(--accent-cyan); margin-right:6px;"></i> Live Demo URL (Optional)
+          </label>
+          <input type="url" id="proj-live-url" name="live_url" class="form-input" placeholder="e.g. https://bloomyhaven.store/ (Leave empty if no live site)">
+          <div style="font-size:0.75rem; color:var(--text-muted); margin-top:4px;">
+            If entered, a shiny <strong>Live Demo</strong> button appears on the public website and opens the live system in a new tab.
+          </div>
+        </div>
+
         <!-- Existing Project Screenshots Manager -->
         <div class="form-group" id="existing-images-group" style="display:none;">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
@@ -1417,6 +1439,7 @@ if (file_exists($messagesFile)) {
     function openAddProjectModal() {
       document.getElementById('project-form').reset();
       document.getElementById('proj-id').value = '';
+      document.getElementById('proj-live-url').value = '';
       document.getElementById('modal-heading').textContent = 'Add New Software Project';
       document.getElementById('file-count-label').textContent = '';
       document.getElementById('existing-images-group').style.display = 'none';
@@ -1455,6 +1478,7 @@ if (file_exists($messagesFile)) {
       document.getElementById('proj-short').value = proj.short_desc || '';
       document.getElementById('proj-full').value = proj.full_desc || '';
       document.getElementById('proj-tech').value = (proj.tech_stack || []).join(', ');
+      document.getElementById('proj-live-url').value = proj.live_url || '';
       document.getElementById('modal-heading').textContent = 'Edit Project & Manage Screenshots: ' + proj.title;
       document.getElementById('file-count-label').textContent = '';
 

@@ -491,6 +491,27 @@ body {
   transform: translateY(-2px);
 }
 
+.btn-live-demo {
+  background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 50%, #8b5cf6 100%) !important;
+  background-size: 200% auto !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 0 4px 18px rgba(6, 182, 212, 0.4) !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 7px !important;
+  text-decoration: none !important;
+}
+
+.btn-live-demo:hover {
+  background-position: right center !important;
+  transform: translateY(-2px) scale(1.03) !important;
+  box-shadow: 0 6px 26px rgba(6, 182, 212, 0.65) !important;
+  color: #ffffff !important;
+}
+
 /* Hero Stats Bar */
 .hero-stats-grid {
   display: grid;

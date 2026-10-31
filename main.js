@@ -380,6 +380,18 @@ function initProjectsSystem() {
         });
       }
 
+      // Handle Live Demo Button
+      const modalLiveBtn = document.getElementById('modal-live-btn');
+      if (modalLiveBtn) {
+        if (project.live_url && project.live_url.trim() !== '') {
+          modalLiveBtn.href = project.live_url;
+          modalLiveBtn.style.display = 'inline-flex';
+        } else {
+          modalLiveBtn.style.display = 'none';
+          modalLiveBtn.href = '#';
+        }
+      }
+
       // Initialize Images Gallery
       currentProjectImages = project.images && project.images.length ? project.images : ['images/profile.jpg'];
       currentSlideIndex = 0;

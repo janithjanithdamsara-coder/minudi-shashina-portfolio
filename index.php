@@ -687,10 +687,15 @@ if (file_exists($projectsFile)) {
                 </div>
               </div>
 
-              <div class="project-card-footer">
-                <button class="btn btn-outline view-project-details" data-project-id="<?= htmlspecialchars($proj['id']) ?>">
+              <div class="project-card-footer" style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+                <button class="btn btn-outline view-project-details" data-project-id="<?= htmlspecialchars($proj['id']) ?>" style="flex:1;">
                   <i class="fa-solid fa-images"></i> View UI &amp; Details
                 </button>
+                <?php if (!empty($proj['live_url'])): ?>
+                  <a href="<?= htmlspecialchars($proj['live_url']) ?>" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-live-demo" title="Launch Live Demo in new tab">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
+                  </a>
+                <?php endif; ?>
               </div>
             </div>
 
@@ -755,9 +760,14 @@ if (file_exists($projectsFile)) {
       <!-- Bottom Fixed Footer Bar -->
       <div class="modal-footer-bar">
         <span class="modal-esc-hint"><i class="fa-solid fa-keyboard"></i> Press <kbd>ESC</kbd> to exit</span>
-        <button id="modal-bottom-close" type="button" onclick="closeProjectModal()" class="btn btn-primary btn-sm">
-          <i class="fa-solid fa-xmark"></i> Close Preview
-        </button>
+        <div style="display:flex; gap:12px; align-items:center;">
+          <a id="modal-live-btn" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm btn-live-demo" style="display:none; padding:8px 16px; font-size:0.85rem;">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Launch Live Demo
+          </a>
+          <button id="modal-bottom-close" type="button" onclick="closeProjectModal()" class="btn btn-outline btn-sm">
+            <i class="fa-solid fa-xmark"></i> Close Preview
+          </button>
+        </div>
       </div>
 
     </div>
