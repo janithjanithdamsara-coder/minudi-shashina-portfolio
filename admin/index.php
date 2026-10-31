@@ -501,24 +501,250 @@ if (file_exists($messagesFile)) {
       transform: scale(1.15);
     }
 
+    .admin-live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: var(--accent-emerald);
+    }
+    .admin-toggle-btn {
+      display: none;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-glass);
+      color: #fff;
+      font-size: 1.25rem;
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+    .admin-toggle-btn:hover {
+      background: rgba(169, 112, 255, 0.15);
+      border-color: var(--border-glow);
+      color: var(--accent-purple);
+    }
+
+    /* Admin Mobile Drawer & Overlay */
+    .admin-drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(6, 8, 14, 0.78);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 998;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    .admin-drawer-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+    .admin-mobile-drawer {
+      position: fixed;
+      top: 0;
+      right: -330px;
+      width: min(86vw, 320px);
+      height: 100vh;
+      background: #0d1220;
+      border-left: 1px solid var(--border-glass);
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      padding: 24px 18px;
+      overflow-y: auto;
+      box-shadow: -15px 0 40px rgba(0, 0, 0, 0.75);
+      transition: right 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .admin-mobile-drawer.open {
+      right: 0;
+    }
+    .drawer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border-glass);
+      margin-bottom: 16px;
+    }
+    .drawer-close-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-glass);
+      color: var(--text-secondary);
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      transition: all 0.2s ease;
+    }
+    .drawer-close-btn:hover {
+      color: #fff;
+      border-color: #ef4444;
+      background: rgba(239, 68, 68, 0.15);
+    }
+    .drawer-user-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-glass);
+      border-radius: 12px;
+      padding: 12px 14px;
+      margin-bottom: 20px;
+    }
+    .drawer-user-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: rgba(169, 112, 255, 0.15);
+      color: var(--accent-purple);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .drawer-user-name {
+      font-size: 0.85rem;
+      color: #fff;
+    }
+    .drawer-user-status {
+      font-size: 0.72rem;
+      color: var(--accent-emerald);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 2px;
+    }
+    .drawer-section-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      font-weight: 700;
+      margin-bottom: 10px;
+      padding-left: 4px;
+    }
+    .drawer-nav-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+    .admin-drawer-tab {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      background: none;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.2s ease;
+    }
+    .admin-drawer-tab:hover {
+      background: rgba(255, 255, 255, 0.04);
+      color: #fff;
+    }
+    .admin-drawer-tab.active {
+      background: rgba(169, 112, 255, 0.14);
+      border-color: var(--border-glow);
+      color: #fff;
+    }
+    .drawer-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: auto;
+    }
+    .admin-drawer-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px 16px;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .admin-drawer-link.outline {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-glass);
+      color: var(--text-secondary);
+    }
+    .admin-drawer-link.outline:hover {
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+    }
+    .admin-drawer-link.danger {
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.25);
+      color: #fca5a5;
+    }
+    .admin-drawer-link.danger:hover {
+      background: #ef4444;
+      color: #fff;
+    }
+    .drawer-footer {
+      text-align: center;
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      padding-top: 16px;
+      border-top: 1px solid var(--border-glass);
+      margin-top: 18px;
+    }
+
     @media (max-width: 900px) {
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
     }
+    @media (max-width: 820px) {
+      .desktop-nav-actions {
+        display: none !important;
+      }
+      .admin-toggle-btn {
+        display: inline-flex;
+      }
+      .admin-live-badge {
+        display: none;
+      }
+    }
     @media (max-width: 680px) {
-      .admin-navbar { padding: 12px 16px; }
+      .admin-navbar { padding: 12px 14px; }
       .brand-logo { font-size: 1.15rem; gap: 8px; }
-      .brand-logo .icon { width: 30px; height: 30px; font-size: 0.85rem; }
-      .btn-nav { padding: 6px 10px; font-size: 0.78rem; gap: 5px; }
-      .admin-container { padding: 18px 14px 60px 14px; }
-      .stats-grid { grid-template-columns: 1fr; gap: 12px; margin-top: 20px; margin-bottom: 25px; }
-      .stat-card { padding: 18px 16px; }
-      .stat-value { font-size: 1.8rem; }
+      .brand-logo .icon { width: 32px; height: 32px; font-size: 0.85rem; }
+      .admin-container { padding: 16px 12px 60px 12px; }
+      .stats-grid { grid-template-columns: 1fr; gap: 12px; margin-top: 16px; margin-bottom: 22px; }
+      .stat-card { padding: 16px 14px; }
+      .stat-value { font-size: 1.75rem; }
       .tabs-nav { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 8px; -webkit-overflow-scrolling: touch; }
-      .tab-btn { white-space: nowrap; padding: 8px 14px; font-size: 0.82rem; flex-shrink: 0; }
-      .content-box { padding: 18px 14px; border-radius: 14px; }
+      .tab-btn { white-space: nowrap; padding: 8px 12px; font-size: 0.8rem; flex-shrink: 0; }
+      .content-box { padding: 16px 12px; border-radius: 14px; }
       .box-header { flex-direction: column; align-items: flex-start; gap: 12px; }
-      .modal-box { padding: 22px 15px; width: 95%; max-height: 94vh; border-radius: 16px; }
+      .modal-box { padding: 20px 14px; width: 96%; max-height: 94vh; border-radius: 14px; }
       .form-input, .form-textarea, .form-select { font-size: 16px !important; }
+      .table-responsive { -webkit-overflow-scrolling: touch; }
+      table { min-width: 580px; }
     }
   </style>
 </head>
@@ -526,12 +752,16 @@ if (file_exists($messagesFile)) {
 
   <!-- Top Navbar -->
   <header class="admin-navbar">
-    <a href="index.php" class="brand-logo">
-      <div class="icon"><i class="fa-solid fa-code"></i></div>
-      <span>MINUDI<span>.ADMIN</span></span>
-    </a>
+    <div style="display:flex; align-items:center; gap:12px;">
+      <a href="index.php" class="brand-logo">
+        <div class="icon"><i class="fa-solid fa-code"></i></div>
+        <span>MINUDI<span>.ADMIN</span></span>
+      </a>
+      <span class="admin-live-badge"><i class="fa-solid fa-shield-halved"></i> v2.0</span>
+    </div>
 
-    <div class="nav-actions">
+    <!-- Desktop Nav Actions -->
+    <div class="nav-actions desktop-nav-actions">
       <a href="../index.php" target="_blank" class="btn-nav btn-nav-outline">
         <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Portfolio
       </a>
@@ -539,7 +769,72 @@ if (file_exists($messagesFile)) {
         <i class="fa-solid fa-right-from-bracket"></i> Logout
       </a>
     </div>
+
+    <!-- Mobile Drawer Hamburger Toggle Button -->
+    <button type="button" class="admin-toggle-btn" id="adminMenuToggle" aria-label="Toggle navigation menu" onclick="toggleAdminDrawer()">
+      <i class="fa-solid fa-bars"></i>
+    </button>
   </header>
+
+  <!-- Mobile Drawer Overlay & Sliding Drawer -->
+  <div id="adminDrawerOverlay" class="admin-drawer-overlay" onclick="closeAdminDrawer()"></div>
+  <aside id="adminMobileDrawer" class="admin-mobile-drawer" aria-label="Admin Navigation Drawer">
+    <div class="drawer-header">
+      <div class="brand-logo">
+        <div class="icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <span>ADMIN <span>PANEL</span></span>
+      </div>
+      <button type="button" class="drawer-close-btn" onclick="closeAdminDrawer()" aria-label="Close menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <div class="drawer-user-card">
+      <div class="drawer-user-avatar"><i class="fa-solid fa-user-shield"></i></div>
+      <div>
+        <div class="drawer-user-name">Signed in as <strong>admin</strong></div>
+        <div class="drawer-user-status"><i class="fa-solid fa-circle"></i> Authenticated Admin</div>
+      </div>
+    </div>
+
+    <div class="drawer-section-title">Navigation Tabs</div>
+    <div class="drawer-nav-list">
+      <button type="button" class="admin-drawer-tab active" data-tab="projects-tab" onclick="switchMobileTab('projects-tab')">
+        <i class="fa-solid fa-folder-open"></i>
+        <span>Projects (<?= count($projects) ?>)</span>
+      </button>
+      <button type="button" class="admin-drawer-tab" data-tab="analytics-tab" onclick="switchMobileTab('analytics-tab')">
+        <i class="fa-solid fa-chart-line"></i>
+        <span>Analytics &amp; Visitors</span>
+      </button>
+      <button type="button" class="admin-drawer-tab" data-tab="inquiries-tab" onclick="switchMobileTab('inquiries-tab')">
+        <i class="fa-solid fa-inbox"></i>
+        <span>Inquiries Inbox (<?= count($messages) ?>)</span>
+      </button>
+      <button type="button" class="admin-drawer-tab" data-tab="audit-tab" onclick="switchMobileTab('audit-tab')">
+        <i class="fa-solid fa-shield-halved"></i>
+        <span>Security Audit Log</span>
+      </button>
+      <button type="button" class="admin-drawer-tab" data-tab="password-tab" onclick="switchMobileTab('password-tab')">
+        <i class="fa-solid fa-key"></i>
+        <span>Change Password</span>
+      </button>
+    </div>
+
+    <div class="drawer-section-title">Quick Actions</div>
+    <div class="drawer-actions">
+      <a href="../index.php" target="_blank" class="admin-drawer-link outline">
+        <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Live Portfolio
+      </a>
+      <a href="logout.php" class="admin-drawer-link danger">
+        <i class="fa-solid fa-right-from-bracket"></i> Sign Out
+      </a>
+    </div>
+
+    <div class="drawer-footer">
+      MINUDI.ADMIN &bull; Mobile Ready v2.0
+    </div>
+  </aside>
 
   <div class="admin-container">
     
@@ -1062,12 +1357,59 @@ if (file_exists($messagesFile)) {
   </div>
 
   <script>
-    // Tab Switching
+    // Admin Mobile Drawer Navigation
+    function toggleAdminDrawer() {
+      const drawer = document.getElementById('adminMobileDrawer');
+      const overlay = document.getElementById('adminDrawerOverlay');
+      if (!drawer || !overlay) return;
+      const isOpen = drawer.classList.contains('open');
+      if (isOpen) {
+        closeAdminDrawer();
+      } else {
+        drawer.classList.add('open');
+        overlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeAdminDrawer() {
+      const drawer = document.getElementById('adminMobileDrawer');
+      const overlay = document.getElementById('adminDrawerOverlay');
+      if (drawer) drawer.classList.remove('open');
+      if (overlay) overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function switchMobileTab(tabId) {
+      document.querySelectorAll('.tab-pane').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(el => {
+        el.classList.remove('active');
+        if (el.getAttribute('onclick')?.includes(tabId)) {
+          el.classList.add('active');
+        }
+      });
+      document.querySelectorAll('.admin-drawer-tab').forEach(el => {
+        el.classList.remove('active');
+        if (el.getAttribute('data-tab') === tabId) {
+          el.classList.add('active');
+        }
+      });
+      const pane = document.getElementById(tabId);
+      if (pane) pane.classList.add('active');
+      closeAdminDrawer();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Tab Switching (Desktop & Common)
     function switchTab(tabId, btn) {
       document.querySelectorAll('.tab-pane').forEach(el => el.classList.remove('active'));
       document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
-      document.getElementById(tabId).classList.add('active');
-      btn.classList.add('active');
+      document.querySelectorAll('.admin-drawer-tab').forEach(el => el.classList.remove('active'));
+      const targetPane = document.getElementById(tabId);
+      if (targetPane) targetPane.classList.add('active');
+      if (btn) btn.classList.add('active');
+      const drawerBtn = document.querySelector(`.admin-drawer-tab[data-tab="${tabId}"]`);
+      if (drawerBtn) drawerBtn.classList.add('active');
     }
 
     // Modal Handling
