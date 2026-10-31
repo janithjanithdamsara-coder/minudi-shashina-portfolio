@@ -138,7 +138,37 @@ if (!empty($id)) {
     foreach ($projects as $key => $proj) {
         if ($proj['id'] === $id) {
             $isEdit = true;
-            $finalImages = !empty($uploadedImages) ? array_merge($proj['images'], $uploadedImages) : $proj['images'];
+            
+            // Retained existing images submitted by user
+            $keptImages = [];
+            if (isset($_POST['existing_images']) && is_array($_POST['existing_images'])) {
+                foreach ($_POST['existing_images'] as $img) {
+                    $imgClean = trim(strip_tags($img));
+                    if (!empty($imgClean)) {
+                        $keptImages[] = $imgClean;
+                    }
+                }
+            } else {
+                // If not explicitly set, keep original images
+                $keptImages = $proj['images'] ?? [];
+            }
+
+            // Clean up removed uploaded files from disk
+            $removedImages = array_diff($proj['images'] ?? [], $keptImages);
+            foreach ($removedImages as $rem) {
+                if (strpos($rem, 'uploads/projects/proj_') === 0) {
+                    $remPath = __DIR__ . '/../../' . $rem;
+                    if (file_exists($remPath)) {
+                        @unlink($remPath);
+                    }
+                }
+            }
+
+            // Combine kept images + new uploaded images
+            $finalImages = array_merge($keptImages, $uploadedImages);
+            if (empty($finalImages)) {
+                $finalImages = ['images/profile.jpg'];
+            }
 
             $projects[$key] = [
                 'id'            => $id,
@@ -148,7 +178,7 @@ if (!empty($id)) {
                 'short_desc'    => $short_desc,
                 'full_desc'     => !empty($full_desc) ? $full_desc : $short_desc,
                 'tech_stack'    => $tech_stack,
-                'images'        => $finalImages,
+                'images'        => array_values($finalImages),
                 'live_url'      => $live_url,
                 'github_url'    => $github_url,
                 'created_at'    => $proj['created_at'] ?? date('Y-m-d')

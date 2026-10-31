@@ -458,6 +458,49 @@ if (file_exists($messagesFile)) {
       border-color: var(--accent-purple);
     }
 
+    /* Existing Image Manager Cards in Modal */
+    .existing-img-card {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border-glass);
+      aspect-ratio: 16/10;
+      background: #000;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.25s ease;
+    }
+    .existing-img-card:hover {
+      border-color: var(--accent-purple);
+      transform: translateY(-2px);
+    }
+    .existing-img-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .img-del-btn {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(239, 68, 68, 0.9);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+      transition: all 0.2s ease;
+    }
+    .img-del-btn:hover {
+      background: #dc2626;
+      transform: scale(1.15);
+    }
+
     @media (max-width: 900px) {
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
     }
@@ -634,9 +677,9 @@ if (file_exists($messagesFile)) {
                       <span class="badge-pill <?= $badgeClass ?>"><?= htmlspecialchars($proj['category_name'] ?? ucfirst($cat)) ?></span>
                     </td>
                     <td>
-                      <span style="font-family:'JetBrains Mono',monospace; font-size:0.85rem; color:var(--accent-cyan);">
+                      <button type="button" class="action-btn" style="width:auto; padding:4px 10px; font-family:'JetBrains Mono',monospace; font-size:0.82rem; color:var(--accent-cyan); border-color:rgba(0,242,254,0.3);" title="View & Manage Screenshots" onclick='editProject(<?= json_encode($proj) ?>)'>
                         <i class="fa-solid fa-images"></i> <?= count($proj['images'] ?? []) ?> Screenshots
-                      </span>
+                      </button>
                     </td>
                     <td>
                       <div style="font-size:0.8rem; color:var(--text-secondary); max-width:200px;">
@@ -980,9 +1023,25 @@ if (file_exists($messagesFile)) {
           <input type="text" id="proj-tech" name="tech_stack" class="form-input" placeholder="e.g. PHP, MySQL, JavaScript, Bootstrap">
         </div>
 
+        <!-- Existing Project Screenshots Manager -->
+        <div class="form-group" id="existing-images-group" style="display:none;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+            <label style="margin-bottom:0; font-weight:700; color:#fff;">
+              <i class="fa-solid fa-images" style="color:var(--accent-purple); margin-right:6px;"></i> Current Screenshots (<span id="existing-images-count">0</span>)
+            </label>
+            <span style="font-size:0.78rem; color:var(--text-muted);">
+              Click <i class="fa-solid fa-trash-can" style="color:#ef4444;"></i> to delete any image
+            </span>
+          </div>
+
+          <div id="existing-images-grid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(130px, 1fr)); gap:12px; background:rgba(255,255,255,0.02); padding:14px; border-radius:12px; border:1px solid var(--border-glass);">
+            <!-- Populated via JS -->
+          </div>
+        </div>
+
         <!-- Multi-Image Upload Field -->
         <div class="form-group">
-          <label>Upload Project UI Screenshots (Select 2 to 4 Images)</label>
+          <label><i class="fa-solid fa-cloud-arrow-up" style="color:var(--accent-cyan); margin-right:6px;"></i> Upload Additional Screenshots (.jpg, .png, .webp)</label>
           <div class="file-input-box" onclick="document.getElementById('proj-images').click()">
             <i class="fa-solid fa-cloud-arrow-up" style="font-size:2rem; color:var(--accent-purple); margin-bottom:8px;"></i>
             <div style="font-weight:600; color:#fff;">Click to select multiple UI screenshots (.jpg, .png, .webp)</div>
@@ -1018,6 +1077,8 @@ if (file_exists($messagesFile)) {
       document.getElementById('proj-id').value = '';
       document.getElementById('modal-heading').textContent = 'Add New Software Project';
       document.getElementById('file-count-label').textContent = '';
+      document.getElementById('existing-images-group').style.display = 'none';
+      document.getElementById('existing-images-grid').innerHTML = '';
       modal.classList.add('open');
       document.body.style.overflow = 'hidden';
     }
@@ -1044,7 +1105,7 @@ if (file_exists($messagesFile)) {
       }
     }
 
-    // Edit Project
+    // Edit Project & Populate Existing Images
     function editProject(proj) {
       document.getElementById('proj-id').value = proj.id;
       document.getElementById('proj-title').value = proj.title;
@@ -1052,9 +1113,83 @@ if (file_exists($messagesFile)) {
       document.getElementById('proj-short').value = proj.short_desc || '';
       document.getElementById('proj-full').value = proj.full_desc || '';
       document.getElementById('proj-tech').value = (proj.tech_stack || []).join(', ');
-      document.getElementById('modal-heading').textContent = 'Edit Project: ' + proj.title;
-      document.getElementById('file-count-label').textContent = `Current: ${proj.images ? proj.images.length : 0} image(s). Uploading new images will append/update them.`;
+      document.getElementById('modal-heading').textContent = 'Edit Project & Manage Screenshots: ' + proj.title;
+      document.getElementById('file-count-label').textContent = '';
+
+      // Populate Existing Screenshots
+      const imagesGroup = document.getElementById('existing-images-group');
+      const imagesGrid = document.getElementById('existing-images-grid');
+      const images = proj.images || [];
+
+      imagesGrid.innerHTML = '';
+      if (images.length > 0) {
+        imagesGroup.style.display = 'block';
+        document.getElementById('existing-images-count').textContent = images.length;
+        
+        images.forEach((img, idx) => {
+          const fileName = img.split('/').pop();
+          const card = document.createElement('div');
+          card.className = 'existing-img-card';
+          card.innerHTML = `
+            <img src="../${img}" alt="Screenshot ${idx + 1}" onerror="this.src='../images/profile.jpg'">
+            <input type="hidden" name="existing_images[]" value="${img}">
+            <button type="button" class="img-del-btn" onclick="removeImageCard(this, '${proj.id}', '${img}')" title="Delete Screenshot">
+              <i class="fa-solid fa-trash-can"></i>
+            </button>
+            <div style="position:absolute; bottom:0; left:0; right:0; background:linear-gradient(transparent, rgba(0,0,0,0.85)); padding:4px 6px; font-size:0.68rem; color:#cbd5e1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+              ${fileName}
+            </div>
+          `;
+          imagesGrid.appendChild(card);
+        });
+      } else {
+        imagesGroup.style.display = 'none';
+      }
+
       modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Direct Image Deletion
+    async function removeImageCard(btn, projId, imgPath) {
+      const fileName = imgPath.split('/').pop();
+      if (!confirm(`Are you sure you want to delete this screenshot?\n\n"${fileName}"\n\nClick OK to permanently delete it.`)) {
+        return;
+      }
+
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin" style="font-size:0.7rem;"></i>';
+
+      const fd = new FormData();
+      fd.append('project_id', projId);
+      fd.append('image_path', imgPath);
+      fd.append('csrf_token', '<?= get_csrf_token() ?>');
+
+      try {
+        const res = await fetch('api/delete_project_image.php', { method: 'POST', body: fd });
+        const data = await res.json();
+        if (data.status === 'success') {
+          const card = btn.closest('.existing-img-card');
+          card.style.opacity = '0';
+          card.style.transform = 'scale(0.8)';
+          setTimeout(() => {
+            card.remove();
+            const remainingCards = document.querySelectorAll('#existing-images-grid .existing-img-card');
+            document.getElementById('existing-images-count').textContent = remainingCards.length;
+            if (remainingCards.length === 0) {
+              document.getElementById('existing-images-grid').innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:15px; color:var(--text-muted); font-size:0.85rem;"><i class="fa-solid fa-triangle-exclamation" style="color:var(--accent-amber); margin-right:6px;"></i> All screenshots deleted. Please upload new screenshots below.</div>';
+            }
+          }, 250);
+        } else {
+          alert(data.message || 'Error deleting screenshot.');
+          btn.disabled = false;
+          btn.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
+        }
+      } catch (err) {
+        alert('Server communication error.');
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
+      }
     }
 
     // Delete Project
