@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['admin_logged']   = true;
                 $_SESSION['admin_user']     = 'Admin';
                 $_SESSION['last_activity']  = time();
-                $_SESSION['ua_fingerprint'] = md5($_SERVER['HTTP_USER_AGENT'] ?? 'Unknown');
+                $_SESSION['ua_fingerprint'] = hash('sha256', $_SERVER['HTTP_USER_AGENT'] ?? 'Unknown');
 
                 clear_failed_logins();
                 log_admin_action('ADMIN_LOGIN_SUCCESS', "User: {$username}");
@@ -59,8 +59,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $msg = $_GET['msg'] ?? '';
 if ($msg === 'expired') {
     $error = 'Your administrative session expired due to inactivity. Please sign in again.';
-} elseif ($msg === 'security_reset') {
-    $error = 'Security warning: Session signature mismatch detected. Session has been safely reset.';
+} elseif ($msg === 'security_reset' || $msg === 'security_hijack') {
+    $error = 'Your session has been reset. Please sign in with your credentials.';
 }
 ?>
 <!DOCTYPE html>

@@ -70,9 +70,7 @@ function init_secure_session() {
         // Session Hijacking Protection (User-Agent Fingerprint)
         $currentFingerprint = hash('sha256', $_SERVER['HTTP_USER_AGENT'] ?? 'Unknown');
         if (!isset($_SESSION['ua_fingerprint'])) {
-            destroy_secure_session();
-            header('Location: login.php?msg=security_reset');
-            exit;
+            $_SESSION['ua_fingerprint'] = $currentFingerprint;
         } elseif (!hash_equals($_SESSION['ua_fingerprint'], $currentFingerprint)) {
             destroy_secure_session();
             header('Location: login.php?msg=security_hijack');
